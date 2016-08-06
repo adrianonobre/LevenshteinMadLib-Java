@@ -3,15 +3,15 @@ package org.adrianonobre;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by adriano on 2016-06-28.
  */
 public class MadLib {
 
-    private final Set<String> dictionary;
+    private final List<String> dictionary;
 
     private final LevenshteinCalculator levenshteinCalculator = new LevenshteinCalculator();
 
@@ -25,7 +25,7 @@ public class MadLib {
     }
 
     public MadLib(String wordFile) throws IOException {
-        dictionary = new HashSet<>();
+        dictionary = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(wordFile))) {
             for (String line; (line = br.readLine()) != null; ) {
                 dictionary.add(line.toLowerCase());
@@ -45,12 +45,15 @@ public class MadLib {
     }
 
     public String getReplacement(int distance, String str) {
-        for (String word : dictionary) {
+        final int dictionarySize = dictionary.size();
+        int startIndex = (int) Math.floor(Math.random() * dictionarySize);
+        for (int i = 0; i < dictionarySize; i++) {
+            String word = dictionary.get((i + startIndex) % dictionarySize);
             if (levenshteinCalculator.getDistance(str, word) == distance) {
                 return word;
             }
         }
-        return null;
+        return str;
     }
 
 

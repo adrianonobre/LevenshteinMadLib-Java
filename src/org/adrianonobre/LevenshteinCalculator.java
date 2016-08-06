@@ -1,18 +1,9 @@
 package org.adrianonobre;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Created by adriano on 2016-06-28.
  */
 public class LevenshteinCalculator {
-
-
-    private static Set<String> words;
 
     public int getDistance(String source, String target) {
 
