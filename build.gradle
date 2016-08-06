@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+archivesBaseName = 'LevenshteinMadLib'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.adrianonobre.MadLibUI'
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}

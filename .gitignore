@@ -1,3 +1,5 @@
 .idea
+.gradle
+build
 LevenshteinMadLib-Java.iml
 out
